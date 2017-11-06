@@ -29,12 +29,27 @@ public class InMemoryUserDetailsService implements UserDetailsService, UserServi
 	@PostConstruct
 	private void init() {
 		this.users = new HashMap<>();
-		users.put("admin", new ProjectSecurityUser("admin", "password", UserRole.ADMIN));		
+		// commented lines correspond to user:password base64 encoded string
+		// Those string are used in the "Authentication" header in every request
+		// "YWRtaW46cGFzc3dvcmQ="
+		users.put("admin", new ProjectSecurityUser("admin", "password", UserRole.ADMIN));
+		// "cG0xOnBhc3N3b3Jk"
+		// ----!
 		users.put("pm1", new ProjectSecurityUser("pm1", "password", UserRole.PM));
+		// "cG0yOnBhc3N3b3Jk"
+		// ----!
 		users.put("pm2", new ProjectSecurityUser("pm2", "password", UserRole.PM));
+		// "ZGV2MTpwYXNzd29yZA=="
+		// ------!
 		users.put("dev1", new ProjectSecurityUser("dev1", "password", UserRole.DEVELOPER));
+		// "ZGV2MjpwYXNzd29yZA=="
+		// ------!
 		users.put("dev2", new ProjectSecurityUser("dev2", "password", UserRole.DEVELOPER));
+		// "dGVzdDE6cGFzc3dvcmQ="
+		// -------!
 		users.put("test1", new ProjectSecurityUser("test1", "password", UserRole.TESTER));
+		// "dGVzdDI6cGFzc3dvcmQ="
+		// -------!
 		users.put("test2",new ProjectSecurityUser("test2", "password", UserRole.TESTER));
 	}
 	
